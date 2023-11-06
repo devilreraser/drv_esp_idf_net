@@ -1,3 +1,9 @@
-menu "Component template Configuration"
+menu "Component drv_net Configuration"
+
+    config DRV_NET_USE
+        bool "Use drv_net Component"
+        default y
+        help
+            Selct use or not net (network) functionality.
 
 endmenu

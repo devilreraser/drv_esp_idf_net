@@ -1,5 +1,5 @@
 /* *****************************************************************************
- * File:   template.c
+ * File:   drv_net.c
  * Author: XX
  *
  * Created on YYYY MM DD
@@ -11,12 +11,19 @@
 /* *****************************************************************************
  * Header Includes
  **************************************************************************** */
-#include "template.h"
+#include "drv_net.h"
+
+#include "esp_err.h"
+//#include "lwip/inet.h"
+//#include "lwip/netif.h"
+#include "esp_netif.h"
+#include "esp_event.h"
+
 
 /* *****************************************************************************
  * Configuration Definitions
  **************************************************************************** */
-#define TAG "template"
+#define TAG "drv_net"
 
 /* *****************************************************************************
  * Constants and Macros Definitions
@@ -45,3 +52,11 @@
 /* *****************************************************************************
  * Functions
  **************************************************************************** */
+void drv_net_init(void)
+{
+    // Initialize TCP/IP network interface (should be called only once in application)
+    ESP_ERROR_CHECK(esp_netif_init());
+    // Create default event loop that running in background
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+
+}
